@@ -1,5 +1,7 @@
 package academy.belhard;
 
+import academy.belhard.exceptions.NullFieldException;
+
 public class Address {
     private int id;
     private String city;
@@ -8,7 +10,10 @@ public class Address {
     private int block;
     private int appartment;
 
-    public Address(int id, String city, String street, int houseNumber, int block, int appartment) {
+    public Address(Integer id, String city, String street, Integer houseNumber, int block, int appartment) {
+        if(id == null || city == null || street == null || houseNumber == null){
+            throw new NullFieldException("Filds can't be Null!");
+        }
         this.id = id;
         this.city = city;
         this.street = street;
@@ -17,11 +22,15 @@ public class Address {
         this.appartment = appartment;
     }
 
-    public Address(int id, String city, String street, int houseNumber) {
-        this.id = id;
+    public Address(String city, String street, Integer houseNumber, int block, int appartment) {
+        if(city == null || street == null || houseNumber == null){
+            throw new NullFieldException("Filds can't be Null!");
+        }
         this.city = city;
         this.street = street;
         this.houseNumber = houseNumber;
+        this.block = block;
+        this.appartment = appartment;
     }
 
     public int getId() {
@@ -48,19 +57,31 @@ public class Address {
         return appartment;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
+        if(id == null){
+            throw new NullFieldException("Filds can't be Null!");
+        }
         this.id = id;
     }
 
     public void setCity(String city) {
+        if(city == null){
+            throw new NullFieldException("Filds can't be Null!");
+        }
         this.city = city;
     }
 
     public void setStreet(String street) {
+        if(street == null){
+            throw new NullFieldException("Filds can't be Null!");
+        }
         this.street = street;
     }
 
-    public void setHouseNumber(int houseNumber) {
+    public void setHouseNumber(Integer houseNumber) {
+        if(houseNumber == null){
+            throw new NullFieldException("Filds can't be Null!");
+        }
         this.houseNumber = houseNumber;
     }
 
